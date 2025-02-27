@@ -1,51 +1,104 @@
-import React, { useState } from "react";
-import { 
-    Text,
-    View, 
-    Image,
-    TextInput,  
-    TouchableOpacity 
-} from "react-native";
-import { loginstyle } from "./src/style/MainStyles";
+import React, {useState} from 'react';
+import {
+  Text,
+  View,
+  ImageBackground,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
+import {loginstyle} from './src/style/MainStyles';
 
 const App = () => {
-    const [username, setUsername] = useState('');
-    const [firstName, setFirstName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-    const handlePress = () => {
-        console.log('hello');
-        setFirstName('Johnny');
-        setUsername('jogger');
-    };
-
-    return (
-        <View style={loginstyle.container}>
-
-            {/* Image */}
-            <TouchableOpacity onPress={handlePress}>
-                <Image 
-                    style={loginstyle.ImageContainer}
-                    source={require('./src/assets/put.jpg')}
-                />
-            </TouchableOpacity>
-
-            {/* Text */}
-            <Text> Lolobron </Text>
-
-            <TextInput
-                value={firstName}
-                style={loginstyle.TextInput}
-                onChangeText={(text) => setFirstName(text)} 
-            />
-
-            <TextInput
-                value={username}
-                style={loginstyle.TextInput}
-                onChangeText={(text) => setUsername(text)} 
-            />
-
+  return (
+    <ImageBackground
+      source={require('./src/assets/overlay.jpg')} 
+      style={loginstyle.background}
+      resizeMode="cover">
+      <View style={loginstyle.container}>
+        {/* Title and Description */}
+        <View style={loginstyle.titleContainer}>
+          <Text style={loginstyle.registerTitle}>Create Your Account</Text>
+          <Text style={loginstyle.description}>
+            Be part of the community!
+          </Text>
         </View>
-    );
+
+        {/* Register Card */}
+        <View style={loginstyle.card}>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            {/* First Name Input */}
+            <View style={loginstyle.inputGroup}>
+              <Text style={loginstyle.label}>First Name</Text>
+              <TextInput
+                placeholder=""
+                value={firstName}
+                style={loginstyle.textInput}
+                onChangeText={text => setFirstName(text)}
+              />
+            </View>
+
+            {/* Last Name Input */}
+            <View style={loginstyle.inputGroup}>
+              <Text style={loginstyle.label}>Last Name</Text>
+              <TextInput
+                placeholder=""
+                value={lastName}
+                style={loginstyle.textInput}
+                onChangeText={text => setLastName(text)}
+              />
+            </View>
+
+            {/* Username Input */}
+            <View style={loginstyle.inputGroup}>
+              <Text style={loginstyle.label}>Username</Text>
+              <TextInput
+                placeholder=""
+                value={username}
+                style={loginstyle.textInput}
+                onChangeText={text => setUsername(text)}
+              />
+            </View>
+
+            {/* Email Input */}
+            <View style={loginstyle.inputGroup}>
+              <Text style={loginstyle.label}>Email</Text>
+              <TextInput
+                placeholder=""
+                value={email}
+                style={loginstyle.textInput}
+                keyboardType="email-address"
+                onChangeText={text => setEmail(text)}
+              />
+            </View>
+
+            {/* Password Input */}
+            <View style={loginstyle.inputGroup}>
+              <Text style={loginstyle.label}>Password</Text>
+              <TextInput
+                placeholder=""
+                value={password}
+                style={loginstyle.textInput}
+                secureTextEntry={true}
+                onChangeText={text => setPassword(text)}
+              />
+            </View>
+
+            <TouchableOpacity style={loginstyle.button}>
+              <Text style={loginstyle.buttonText}>Join Now</Text>
+            </TouchableOpacity>
+          </ScrollView>
+        </View>
+      </View>
+    </ImageBackground>
+  );
 };
 
 export default App;
