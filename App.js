@@ -7,15 +7,28 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
 import {loginstyle} from './src/style/MainStyles';
 
 const App = () => {
+
+  // variables
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleRegister = () => {
+    if (!firstName || !lastName || !username || !email || !password) {
+      Alert.alert('Error', 'Please fill-up all fields');
+      return;
+    }
+  
+    Alert.alert('Success!','Account Registered Successfully!');
+  };
+  
 
   return (
     <ImageBackground
@@ -91,7 +104,7 @@ const App = () => {
               />
             </View>
 
-            <TouchableOpacity style={loginstyle.button}>
+            <TouchableOpacity style={loginstyle.button} onPress={() => handleRegister()}>
               <Text style={loginstyle.buttonText}>Join Now</Text>
             </TouchableOpacity>
           </ScrollView>
