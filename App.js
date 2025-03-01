@@ -1,116 +1,33 @@
-import React, {useState} from 'react';
-import {
-  Text,
-  View,
-  ImageBackground,
-  Image,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-  Alert,
-} from 'react-native';
-import {loginstyle} from './src/style/MainStyles';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
+// Screen Imports
+import WelcomeScreen from "./src/screens/WelcomeScreen";
+import RegisterScreen from "./src/screens/RegisterScreen";
+import LoginScreen from "./src/screens/LoginScreen";
+
+const Stack = createStackNavigator();
 
 const App = () => {
-
-  // variables
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleRegister = () => {
-    if (!firstName || !lastName || !username || !email || !password) {
-      Alert.alert('Error', 'Please fill-up all fields');
-      return;
-    }
-  
-    Alert.alert('Success!','Account Registered Successfully!');
-  };
-  
-
   return (
-    <ImageBackground
-      source={require('./src/assets/overlay.jpg')} 
-      style={loginstyle.background}
-      resizeMode="cover">
-      <View style={loginstyle.container}>
-        {/* Title and Description */}
-        <View style={loginstyle.titleContainer}>
-          <Text style={loginstyle.registerTitle}>Create Your Account</Text>
-          <Text style={loginstyle.description}>
-            Be part of the community!
-          </Text>
-        </View>
-
-        {/* Register Card */}
-        <View style={loginstyle.card}>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            {/* First Name Input */}
-            <View style={loginstyle.inputGroup}>
-              <Text style={loginstyle.label}>First Name</Text>
-              <TextInput
-                placeholder=""
-                value={firstName}
-                style={loginstyle.textInput}
-                onChangeText={text => setFirstName(text)}
-              />
-            </View>
-
-            {/* Last Name Input */}
-            <View style={loginstyle.inputGroup}>
-              <Text style={loginstyle.label}>Last Name</Text>
-              <TextInput
-                placeholder=""
-                value={lastName}
-                style={loginstyle.textInput}
-                onChangeText={text => setLastName(text)}
-              />
-            </View>
-
-            {/* Username Input */}
-            <View style={loginstyle.inputGroup}>
-              <Text style={loginstyle.label}>Username</Text>
-              <TextInput
-                placeholder=""
-                value={username}
-                style={loginstyle.textInput}
-                onChangeText={text => setUsername(text)}
-              />
-            </View>
-
-            {/* Email Input */}
-            <View style={loginstyle.inputGroup}>
-              <Text style={loginstyle.label}>Email</Text>
-              <TextInput
-                placeholder=""
-                value={email}
-                style={loginstyle.textInput}
-                keyboardType="email-address"
-                onChangeText={text => setEmail(text)}
-              />
-            </View>
-
-            {/* Password Input */}
-            <View style={loginstyle.inputGroup}>
-              <Text style={loginstyle.label}>Password</Text>
-              <TextInput
-                placeholder=""
-                value={password}
-                style={loginstyle.textInput}
-                secureTextEntry={true}
-                onChangeText={text => setPassword(text)}
-              />
-            </View>
-
-            <TouchableOpacity style={loginstyle.button} onPress={() => handleRegister()}>
-              <Text style={loginstyle.buttonText}>Join Now</Text>
-            </TouchableOpacity>
-          </ScrollView>
-        </View>
-      </View>
-    </ImageBackground>
+    <SafeAreaProvider style={{ flex: 1 }}> 
+      <GestureHandlerRootView style={{ flex: 1 }}> 
+        <NavigationContainer>
+          <Stack.Navigator 
+            initialRouteName="WelcomeScreen"
+            screenOptions={{ headerShown: false }}
+          >
+            {/* screen stacks */}
+            <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+            <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 };
 
