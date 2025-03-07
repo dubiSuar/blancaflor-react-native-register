@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 export const loginstyle = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#0d1c2e',
+    backgroundColor: '#366dfb',
   },
 
   header: {
@@ -28,7 +28,7 @@ export const loginstyle = StyleSheet.create({
   background: {
     flex: 1,
     width: '100%',
-    height: '30%',
+    height: '90%',
   },
 
   titleContainer: {
@@ -54,7 +54,7 @@ export const loginstyle = StyleSheet.create({
 
   card: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#1c222e',
     padding: 20,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
@@ -84,23 +84,22 @@ export const loginstyle = StyleSheet.create({
   label: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#444',
+    color: '#ffffff',
     marginBottom: 6,
   },
 
   textInput: {
-    borderWidth: 1,
-    borderColor: '#ddd',
+    // borderWidth: 1,
     borderRadius: 8,
     fontSize: 16,
     padding: 12,
     // backgroundColor: '#f7f7f7', //old bg color
-    backgroundColor: '#fefefe',
+    backgroundColor: '#303c4d',
     width: '100%', 
   },
 
   button: {
-    backgroundColor: '#bc4366',
+    backgroundColor: '#fad10a',
     paddingVertical: 12,
     borderRadius: 8,
     alignItems: 'center',
@@ -110,7 +109,7 @@ export const loginstyle = StyleSheet.create({
   },  
 
   buttonText: {
-    color: '#fffefe',
+    color: '#1c222e',
     fontSize: 16,
     fontWeight: '600',
   },
