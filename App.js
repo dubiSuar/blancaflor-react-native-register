@@ -8,6 +8,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import WelcomeScreen from "./src/screens/WelcomeScreen";
 import RegisterScreen from "./src/screens/RegisterScreen";
 import LoginScreen from "./src/screens/LoginScreen";
+import HomepageScreen from "./src/screens/HomePageScreen";
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ const App = () => {
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
             <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="HomePageScreen" component={HomepageScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </GestureHandlerRootView>

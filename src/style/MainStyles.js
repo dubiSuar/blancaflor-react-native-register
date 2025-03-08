@@ -95,6 +95,7 @@ export const loginstyle = StyleSheet.create({
     padding: 12,
     // backgroundColor: '#f7f7f7', //old bg color
     backgroundColor: '#303c4d',
+    color: '#ffffff',
     width: '100%', 
   },
 

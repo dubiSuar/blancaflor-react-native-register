@@ -8,8 +8,10 @@ import {
   TouchableOpacity,
   ScrollView,
   Alert,
+  ToastAndroid
 } from 'react-native';
 import {loginstyle} from '../style/MainStyles';
+import api from '../../api';
 import axios from 'axios';
 
 const LoginScreen = ({navigation}) => {
@@ -25,7 +27,7 @@ const LoginScreen = ({navigation}) => {
   const login = async () => {
     try {
       // api call
-      const response = await axios.post('https://fakestoreapi.com/auth/login', {
+      const response = await api.post('', {
         // send  input
         username: username,
         password: password,
@@ -34,7 +36,9 @@ const LoginScreen = ({navigation}) => {
       console.log('Response:', response.data); // Log response data
 
       // display alert
-      Alert.alert('Login Successful!', `Token: ${response.data.token}`);
+      // Alert.alert('Login Successful!', `Token: ${response.data.token}`);
+      ToastAndroid.show(`Login Successful! Token: ${response.data.token}`, ToastAndroid.SHORT);
+      navigation.navigate('HomePageScreen');
     } catch (error) {
 
       // error trapping
